@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/pedidos_abertos"
+        android:orderInCategory="100"
+        android:title="@string/somente_abertos"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/pedidos_fechados"
+        android:orderInCategory="100"
+        android:title="@string/somente_fechados"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/pedidos_todos"
+        android:orderInCategory="100"
+        android:title="@string/todos"
+        app:showAsAction="never" />
+</menu>

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Pedidos</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="point_ney">Point do Ney</string>
+    <string name="versao">0.1</string>
+    <string name="pedidos">Pedidos</string>
+    <string name="produtos">Produtos</string>
+    <string name="somente_abertos">Somente abertos</string>
+    <string name="somente_fechados">Somente fechados</string>
+    <string name="todos">Todos</string>
+    <string name="title_activity_produto">ProdutoActivity</string>
+    <string name="nome">Nome</string>
+    <string name="preco">Preço</string>
+    <string name="produto">Produto</string>
+    <string name="excluir">Excluir</string>
+    <string name="title_activity_pedido">PedidoActivity</string>
+    <string name="mesa_cliente">Mesa ou cliente</string>
+    <string name="delivery">Delivery</string>
+</resources>

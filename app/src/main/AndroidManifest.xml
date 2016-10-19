@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lukefrozz.pedidos">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ProdutosActivity"
+            android:label="@string/title_activity_produto"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProdutoActivity"
+            android:label="@string/title_activity_produto"
+            android:parentActivityName=".ProdutosActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lukefrozz.pedidos.ProdutosActivity" />
+        </activity>
+        <activity
+            android:name=".PedidoActivity"
+            android:label="@string/title_activity_pedido"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lukefrozz.pedidos.MainActivity" />
+        </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="7d9d9c53dc9ea10266960369601d01d5880a2344" />
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+</manifest>

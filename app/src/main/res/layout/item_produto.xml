@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:padding="4dp">
+
+    <TextView
+        android:text="Produto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_produto_nome"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="Preço"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_produto_preco"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textSize="14sp" />
+</LinearLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/card_item_pedido">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="0,1">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="8dp">
+
+                    <TextView
+                        android:text="@string/nome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/produto_nome"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/produto_preco"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/preco"
+                        android:layout_marginEnd="8dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end">
+
+                    <ImageButton
+                        android:layout_height="wrap_content"
+                        android:id="@+id/del_qtd"
+                        app:srcCompat="@drawable/ic_remove_circle_outline_24dp"
+                        style="@style/Widget.AppCompat.ImageButton"
+                        android:layout_width="0dp"
+                        android:layout_weight="1" />
+
+
+                    <TextView
+                        android:text="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/item_qtd"
+                        android:textAppearance="@android:style/TextAppearance.Material.Menu"
+                        android:textStyle="normal|bold"
+                        android:gravity="center_vertical|center"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:layout_height="wrap_content"
+                        android:id="@+id/add_qtd"
+                        app:srcCompat="@drawable/ic_add_circle_24dp"
+                        style="@style/Widget.AppCompat.ImageButton"
+                        android:layout_width="0dp"
+                        android:layout_weight="1" />
+                </LinearLayout>
+            </TableRow>
+
+        </TableLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="5">
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
