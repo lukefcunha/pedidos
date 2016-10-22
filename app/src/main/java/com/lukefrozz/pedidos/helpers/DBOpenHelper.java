@@ -20,17 +20,36 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String tbProduto = "CREATE TABLE produtos ( " +
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//                "uuid TEXT, " +
-                "data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP, " +
-                "data_modificacao DATETIME DEFAULT CURRENT_TIMESTAMP, " +
-                "ativo INTEGER DEFAULT 1, " +
-                "nome TEXT, " +
-                "preco DOUBLE " +
-            ");";
+        String tbProdutos = "CREATE TABLE produtos ( " +
+            "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP, " +
+            "data_modificacao DATETIME DEFAULT CURRENT_TIMESTAMP, " +
+            "ativo INTEGER DEFAULT 1, " +
+            "nome TEXT, " +
+            "preco DECIMAL(20,2) " +
+        ");";
 
-        sqLiteDatabase.execSQL(tbProduto);
+        String tbPedidos = "CREATE TABLE pedidos ( " +
+            "_id INTEGER  PRIMARY KEY AUTOINCREMENT, " +
+            "date_created DATETIME DEFAULT (CURRENT_TIMESTAMP), " +
+            "date_modified DATETIME DEFAULT (CURRENT_TIMESTAMP), " +
+            "delivery BOOLEAN, " +
+            "mesa_cliente TEXT, " +
+            "status INTEGER DEFAULT (1)" +
+        ");";
+
+        String tbProdutosPedido = "CREATE TABLE produtos_pedido ( " +
+            "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "ativo BOOLEAN DEFAULT 1, " +
+            "pedido_id INTEGER REFERENCES pedidos (_id), " +
+            "produto_id INTEGER REFERENCES produtos (_id), " +
+            "preco DOUBLE, " +
+            "quantidade DOUBLE " +
+        ");";
+
+        sqLiteDatabase.execSQL(tbProdutos);
+        sqLiteDatabase.execSQL(tbPedidos);
+        sqLiteDatabase.execSQL(tbProdutosPedido);
     }
 
     @Override

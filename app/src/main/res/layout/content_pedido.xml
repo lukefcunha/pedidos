@@ -24,18 +24,28 @@
             android:id="@+id/pedido_ed_cliente_mesa" />
     </android.support.design.widget.TextInputLayout>
 
-    <TextView
-        android:text="TextView"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_test"
-        android:visibility="gone" />
+        android:layout_height="wrap_content">
 
-    <CheckBox
-        android:text="@string/delivery"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/pedido_checkbox_delivery" />
+        <CheckBox
+            android:text="@string/delivery"
+            android:layout_height="wrap_content"
+            android:id="@+id/pedido_checkbox_delivery"
+            android:layout_weight="1"
+            android:layout_width="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/total_pedido"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textStyle="normal|bold"
+            android:textAlignment="viewEnd" />
+
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

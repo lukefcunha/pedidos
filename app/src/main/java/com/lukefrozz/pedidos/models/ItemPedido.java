@@ -1,6 +1,7 @@
 package com.lukefrozz.pedidos.models;
 
 import java.sql.Date;
+import java.util.Comparator;
 import java.util.UUID;
 
 /**
@@ -70,6 +71,15 @@ public class ItemPedido extends EntidadeComplexa {
         this.produto = produto;
         this.quantidade = quantidade;
     }
+
+    public static Comparator<ItemPedido> ItemPedidoNomeProdutoComparator
+        = new Comparator<ItemPedido>() {
+            @Override
+            public int compare(ItemPedido item1, ItemPedido item2) {
+                return item1.getProduto().getNome().toUpperCase().compareToIgnoreCase(
+                    item2.getProduto().getNome().toUpperCase());
+            }
+    };
 
     @Override
     public boolean equals(Object o) {

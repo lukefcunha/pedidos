@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="2dp">
+    android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/card_item_pedido">
+        android:id="@+id/card_item_pedido"
+        android:layout_marginBottom="2dp">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -30,7 +30,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/produto_nome"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textStyle="normal|bold" />
 
                     <TextView
                         android:id="@+id/produto_preco"
@@ -54,7 +55,8 @@
                         app:srcCompat="@drawable/ic_remove_circle_outline_24dp"
                         style="@style/Widget.AppCompat.ImageButton"
                         android:layout_width="0dp"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/cardview_light_background" />
 
 
                     <TextView
@@ -73,7 +75,8 @@
                         app:srcCompat="@drawable/ic_add_circle_24dp"
                         style="@style/Widget.AppCompat.ImageButton"
                         android:layout_width="0dp"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/cardview_light_background" />
                 </LinearLayout>
             </TableRow>
 

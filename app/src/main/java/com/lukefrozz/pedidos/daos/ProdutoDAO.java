@@ -27,9 +27,7 @@ public class ProdutoDAO extends GenericDAO<Produto> {
     public Produto insert(Produto produto) {
         openWrite();
         ContentValues values = new ContentValues();
-//        produto.setUUID(UUID.randomUUID());
 
-//        values.put("uuid", produto.getUUID().toString());
         values.put("nome", produto.getNome());
         values.put("preco", produto.getPreco());
 
@@ -42,7 +40,7 @@ public class ProdutoDAO extends GenericDAO<Produto> {
         openRead();
         List<Produto> produtos = new ArrayList<>();
         String query = "SELECT " +
-//                "uuid as uuid, " +
+                "_id as id, " +
                 "nome as nome, " +
                 "preco as preco " +
                 "FROM produtos " +
@@ -52,7 +50,7 @@ public class ProdutoDAO extends GenericDAO<Produto> {
 
         while (cursor.moveToNext()) {
             Produto produto = new Produto();
-//            produto.setUUID(UUID.fromString(cursor.getString(0).split("'")[1]));
+            produto.setId(cursor.getLong(0));
             produto.setNome(cursor.getString(1));
             produto.setPreco(cursor.getDouble(2));
             produtos.add(produto);
@@ -78,7 +76,6 @@ public class ProdutoDAO extends GenericDAO<Produto> {
         List<Produto> produtos = new ArrayList<>();
         String query = "SELECT " +
                 "_id as id, " +
-//                "uuid as uuid, " +
                 "nome as nome, " +
                 "preco as preco " +
                 "FROM produtos " +
@@ -87,7 +84,7 @@ public class ProdutoDAO extends GenericDAO<Produto> {
         Cursor cursor = db.rawQuery(query, new String[]{id.toString()});
 
         if (cursor.moveToFirst()) {
-//            produto.setUUID(UUID.fromString(cursor.getString(0).split("'")[1]));
+            produto.setId(cursor.getLong(0));
             produto.setNome(cursor.getString(1));
             produto.setPreco(cursor.getDouble(2));
         } else
@@ -105,7 +102,6 @@ public class ProdutoDAO extends GenericDAO<Produto> {
         List<Produto> produtos = new ArrayList<>();
         String query = "SELECT " +
                 "_id as id, " +
-//                "uuid as uuid, " +
                 "nome as nome, " +
                 "preco as preco " +
                 "FROM produtos " +
@@ -114,7 +110,6 @@ public class ProdutoDAO extends GenericDAO<Produto> {
         Cursor cursor = db.rawQuery(query, new String[]{String.format("'%s'", uuid)});
 
         if (cursor.moveToFirst()) {
-//            produto.setUUID(UUID.fromString(cursor.getString(0).split("'")[1]));
             produto.setNome(cursor.getString(1));
             produto.setPreco(cursor.getDouble(2));
         } else
@@ -147,7 +142,7 @@ public class ProdutoDAO extends GenericDAO<Produto> {
         values.put("ativo", 0);
         values.put("data_modificacao", "CURRENT_TIMESTAMP");
 
-        int i = db.update("produtos", values, "uuid LIKE '%"+produto.getUUID().toString()+"%'", null);
+        int i = db.update("produtos", values, String.format("_id = %d", produto.getId()), null);
         close();
         return produto;
     }

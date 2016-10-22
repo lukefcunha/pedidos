@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.lukefrozz.pedidos.R;
 import com.lukefrozz.pedidos.models.ItemPedido;
+import com.lukefrozz.pedidos.models.Pedido;
 
 import java.util.List;
 
@@ -24,20 +25,24 @@ import java.util.List;
 public class ItemPedidoAdapter extends RecyclerView.Adapter<ItemPedidoAdapter.ViewHolder> {
 
     List<ItemPedido> itens;
+    TextView total;
+    private Pedido pedido;
 
-    public ItemPedidoAdapter(List<ItemPedido> itens) {
+    public ItemPedidoAdapter(List<ItemPedido> itens, TextView total) {
         this.itens = itens;
+        this.total = total;
+        this.pedido = new Pedido();
+        this.pedido.setItens(this.itens);
+        this.total.setText(String.format("Total: R$ %.2f", pedido.total()));
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
-//        CheckBox checkBox;
         ImageButton add, del;
         TextView nome, preco, qtd;
         public ViewHolder(View view) {
             super(view);
             cv = (CardView) view.findViewById(R.id.card_item_pedido);
-//            checkBox = (CheckBox) cv.findViewById(R.id.selecao_produto);
             add = (ImageButton) cv.findViewById(R.id.add_qtd);
             del = (ImageButton) cv.findViewById(R.id.del_qtd);
             nome = (TextView) cv.findViewById(R.id.produto_nome);
@@ -67,6 +72,7 @@ public class ItemPedidoAdapter extends RecyclerView.Adapter<ItemPedidoAdapter.Vi
             public void onClick(View view) {
                 itens.get(position).setQuantidade(itens.get(position).getQuantidade()+1);
                 holder.qtd.setText(String.format("%.0f", itens.get(position).getQuantidade()));
+                total.setText(String.format("Total: R$ %.2f", pedido.total()));
             }
         });
 
@@ -76,18 +82,11 @@ public class ItemPedidoAdapter extends RecyclerView.Adapter<ItemPedidoAdapter.Vi
                 if (itens.get(position).getQuantidade() > 0) {
                     itens.get(position).setQuantidade(itens.get(position).getQuantidade()-1);
                     holder.qtd.setText(String.format("%.0f", itens.get(position).getQuantidade()));
+                    total.setText(String.format("Total: R$ %.2f", pedido.total()));
                 }
             }
         });
 
-//        holder.checkBox.setText(itens.get(position).getProduto().getNome());
-//        holder.checkBox.setChecked(itens.get(position).getAtivo());
-//        holder.checkBox.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                itens.get(position).setAtivo(!itens.get(position).getAtivo());
-//            }
-//        });
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -17,19 +18,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.lukefrozz.pedidos.adapters.PedidoAdapter;
+import com.lukefrozz.pedidos.daos.PedidoDAO;
 import com.lukefrozz.pedidos.helpers.DBOpenHelper;
+import com.lukefrozz.pedidos.models.Pedido;
 
 import java.sql.SQLInput;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
-    private static final String TWITTER_KEY = "cunhakr";
-    private static final String TWITTER_SECRET = "Cunhaf00";
-
-
     private RecyclerView pedidosRecycler;
+    private PedidoDAO pedidoDAO;
+    private List<Pedido> pedidos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,15 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         pedidosRecycler = (RecyclerView) findViewById(R.id.pedidos_recycler);
+        pedidoDAO = new PedidoDAO(this);
+
+        pedidosRecycler = (RecyclerView) findViewById(R.id.pedidos_recycler);
+        pedidosRecycler.setHasFixedSize(true);
+        pedidosRecycler.setLayoutManager(new LinearLayoutManager(this));
+        pedidos = pedidoDAO.retrieveDigest(1);
+
+        PedidoAdapter PA = new PedidoAdapter(pedidos);
+        pedidosRecycler.setAdapter(PA);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -28,12 +28,10 @@ public class ProdutoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Intent intent = getIntent();
         dao = new ProdutoDAO(this);
-//        produto = new Produto();
-        produto = dao.retrieveById(intent.getStringExtra("id") == null ? 0 : Long.parseLong(intent.getStringExtra("id")));
-
+        produto = intent.getStringExtra("id") == null ? new Produto() : dao.retrieveById(Long.parseLong(intent.getStringExtra("id")));
         nome = (EditText) findViewById(R.id.produto_ed_nome);
         preco = (EditText) findViewById(R.id.produto_ed_preco);
-        if (produto != null) {
+        if (produto.getId() != null) {
             nome.setText(produto.getNome());
             preco.setText(produto.getPreco().toString());
         }
@@ -47,8 +45,7 @@ public class ProdutoActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
                 else {
                     Intent intent = new Intent(view.getContext(), ProdutosActivity.class);
-                    if (produto == null) {
-                        produto = new Produto();
+                    if (produto.getId() == null) {
                         produto.setNome(nome.getText().toString());
                         produto.setPreco(Double.parseDouble(preco.getText().toString()));
                         dao.insert(produto);
@@ -69,7 +66,7 @@ public class ProdutoActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_produto, menu);
         MenuItem item = (MenuItem) menu.findItem(R.id.acao_excluir);
-        if (produto == null) item.setVisible(false);
+        if (produto.getId() == null) item.setVisible(false);
         return true;
     }
 
