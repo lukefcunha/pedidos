@@ -20,4 +20,6 @@
     <string name="title_activity_pedido">PedidoActivity</string>
     <string name="mesa_cliente">Mesa ou cliente</string>
     <string name="delivery">Delivery</string>
+    <string name="remover">Remover</string>
+    <string name="adicionar">Adicionar</string>
 </resources>

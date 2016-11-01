@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity
         pedidosRecycler = (RecyclerView) findViewById(R.id.pedidos_recycler);
         pedidosRecycler.setHasFixedSize(true);
         pedidosRecycler.setLayoutManager(new LinearLayoutManager(this));
-        pedidos = pedidoDAO.retrieveDigest(1);
+        pedidos = pedidoDAO.retrieveDigest(1, 2);
 
         PedidoAdapter PA = new PedidoAdapter(pedidos);
         pedidosRecycler.setAdapter(PA);

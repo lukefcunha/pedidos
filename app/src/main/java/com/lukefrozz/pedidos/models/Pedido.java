@@ -16,6 +16,7 @@ public class Pedido extends EntidadeComplexa {
     private String cliente;
     private boolean delivery;
     private List<ItemPedido> itens;
+    private Integer status;
 
     public Double total() {
         Double total = 0.0;
@@ -49,12 +50,21 @@ public class Pedido extends EntidadeComplexa {
         this.itens = itens;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     public void addItem(ItemPedido item) {
         this.itens.add(item);
     }
 
     public Pedido() {
         itens = new ArrayList<>();
+        status = 1;
     }
 
     public Pedido(Long id, UUID uuid, Boolean ativo) {
@@ -70,30 +80,34 @@ public class Pedido extends EntidadeComplexa {
         super(id, uuid, ativo, dataCriacao, dataModificacao);
     }
 
-    public Pedido(String cliente, boolean delivery, List<ItemPedido> itens) {
+    public Pedido(String cliente, boolean delivery, List<ItemPedido> itens, Integer status) {
         this.cliente = cliente;
         this.delivery = delivery;
         this.itens = itens;
+        this.status = status;
     }
 
-    public Pedido(Long id, UUID uuid, Boolean ativo, String cliente, boolean delivery, List<ItemPedido> itens) {
+    public Pedido(Long id, UUID uuid, Boolean ativo, String cliente, boolean delivery, List<ItemPedido> itens, Integer status) {
         super(id, uuid, ativo);
         this.cliente = cliente;
         this.delivery = delivery;
         this.itens = itens;
+        this.status = status;
     }
 
-    public Pedido(Date dataCriacao, Date dataModificacao, String cliente, boolean delivery, List<ItemPedido> itens) {
+    public Pedido(Date dataCriacao, Date dataModificacao, String cliente, boolean delivery, List<ItemPedido> itens, Integer status) {
         super(dataCriacao, dataModificacao);
         this.cliente = cliente;
         this.delivery = delivery;
         this.itens = itens;
+        this.status = status;
     }
 
-    public Pedido(Long id, UUID uuid, Boolean ativo, Date dataCriacao, Date dataModificacao, String cliente, boolean delivery, List<ItemPedido> itens) {
+    public Pedido(Long id, UUID uuid, Boolean ativo, Date dataCriacao, Date dataModificacao, String cliente, boolean delivery, List<ItemPedido> itens, Integer status) {
         super(id, uuid, ativo, dataCriacao, dataModificacao);
         this.cliente = cliente;
         this.delivery = delivery;
         this.itens = itens;
+        this.status = status;
     }
 }

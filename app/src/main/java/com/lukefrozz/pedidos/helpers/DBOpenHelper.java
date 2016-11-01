@@ -31,8 +31,8 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
         String tbPedidos = "CREATE TABLE pedidos ( " +
             "_id INTEGER  PRIMARY KEY AUTOINCREMENT, " +
-            "date_created DATETIME DEFAULT (CURRENT_TIMESTAMP), " +
-            "date_modified DATETIME DEFAULT (CURRENT_TIMESTAMP), " +
+            "data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP, " +
+            "data_modificacao DATETIME DEFAULT CURRENT_TIMESTAMP, " +
             "delivery BOOLEAN, " +
             "mesa_cliente TEXT, " +
             "status INTEGER DEFAULT (1)" +

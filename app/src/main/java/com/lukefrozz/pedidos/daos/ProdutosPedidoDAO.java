@@ -128,8 +128,8 @@ public class ProdutosPedidoDAO extends GenericDAO<ItemPedido> {
 
         values.put("quantidade", itemPedido.getQuantidade());
         values.put("preco", itemPedido.getProduto().getPreco());
-        values.put("produto_id", itemPedido.getProduto().getId());
-        values.put("data_modificacao", "CURRENT_TIMESTAMP");
+//        values.put("produto_id", itemPedido.getProduto().getId());
+//        values.put("data_modificacao", "CURRENT_TIMESTAMP");
 
         int i = db.update("produtos_pedido", values, String.format("_id = %s",itemPedido.getId()), null);
         close();

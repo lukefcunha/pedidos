@@ -1,5 +1,6 @@
 package com.lukefrozz.pedidos.daos;
 
+import android.content.ClipData;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -88,7 +89,23 @@ public class PedidoDAO extends GenericDAO<Pedido> {
 
     @Override
     public Pedido update(Pedido pedido) {
-        return null;
+        openWrite();
+        ContentValues values = new ContentValues();
+
+        values.put("mesa_cliente", pedido.getCliente().toString());
+        values.put("delivery", pedido.isDelivery() ? 1 : 0);
+        values.put("status", pedido.getStatus());
+//        values.put("data_modificacao", "CURRENT_TIMESTAMP");
+
+        for (ItemPedido item : pedido.getItens())
+            if (item.getId() != null)
+                produtosPedidoDAO.update(item);
+            else
+                produtosPedidoDAO.insert(item, pedido.getId());
+
+        int i = db.update("produtos", values, String.format("_id = %s", pedido.getId()), null);
+        close();
+        return pedido;
     }
 
     @Override

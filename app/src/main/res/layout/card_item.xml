@@ -17,13 +17,16 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp">
 
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingStart="8dp">
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp">
 
                     <TextView
                         android:text="@string/nome"
@@ -56,7 +59,8 @@
                         style="@style/Widget.AppCompat.ImageButton"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="@color/cardview_light_background" />
+                        android:backgroundTint="@color/cardview_light_background"
+                        android:contentDescription="@string/remover" />
 
 
                     <TextView
@@ -76,19 +80,12 @@
                         style="@style/Widget.AppCompat.ImageButton"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="@color/cardview_light_background" />
+                        android:backgroundTint="@color/cardview_light_background"
+                        android:contentDescription="@string/adicionar" />
                 </LinearLayout>
             </TableRow>
 
         </TableLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="5">
-
-        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 
